@@ -1,0 +1,36 @@
+/* Selected default styles from https://www.joshwcomeau.com/css/custom-css-reset/ 
+                           and https://andy-bell.co.uk/a-modern-css-reset 
+*/
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  
+  /* 3. Inherit fonts for inputs and buttons */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 4. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 5. Core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  
+  /* Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
