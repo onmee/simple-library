@@ -57,3 +57,67 @@ footer {
     box-shadow: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
 }
 
+/*Modal input form to add book info*/
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 350px;
+    height: fit-content;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #e2e8ee;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+dialog::backdrop {
+    background-color: rgba(120, 120, 120, 0.8)
+}
+
+input {
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    font-size: 22px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+input[type='radio'] {
+    transform: scale(0.8);
+    margin-left: -40px;
+    margin-bottom: 0;
+}
+
+.submit {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+fieldset {
+    border: none;
+    padding: 5px;
+    font-size: 22px;
+}
+
+fieldset p {
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 15px;
+}
+
+.read-choices {
+    display: flex;
+    padding: 0 25px 0 25px;
+}
+
+
