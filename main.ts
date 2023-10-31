@@ -6,6 +6,13 @@ openModal.addEventListener('click', () => {
     modal.showModal();
 })
 
+//Close modal when clicking the backdrop
+modal.addEventListener('click', (event) => {
+    if (event.target.nodeName === 'DIALOG') {
+        modal.close()
+    }
+})
+
 
 //Library types
 interface myLibrary {
