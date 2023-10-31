@@ -32,14 +32,69 @@ footer {
     font-weight: 700;
 }
 
+/*Clickable button*/
 .btn {
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 15px;
+    border-width: 0 0 6px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: .8px;
+    line-height: 20px;
+    padding: 16px 32px;
+    transform: translateZ(0);
+    transition: filter .2s;
+  }
+  
+.btn:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 15px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+  
+.btn:hover {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+  }
+  
+.btn:disabled {
+    cursor: auto;
+  }
+  
+.btn:active {
+    border-width: 4px 0 0;
+    background: none;
+  }
+
+
+/*.btn {
     display: block;
     border: none;
     border-radius: 15px;
     background-color: #00d1b2;
     padding: 12px 32px;
     color: white;
+}*/
+
+.submit {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 22px;
+    font-weight: 600;
 }
+
 
 .add-book {
     font-size: 24px;
@@ -49,16 +104,19 @@ footer {
 .sign-in {
     font-size: 20px;
     font-weight: 600;
-    background-color: #3e8ed0;
+    background-color: #00d1b2;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
+.sign-in::after {
+    background-color: #08e2c1;
 }
+
+/*.btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}*/
 
 /*Modal input form to add book info*/
-
 dialog {
     position: fixed;
     top: 50%;
@@ -95,13 +153,6 @@ input[type='radio'] {
     transform: scale(0.8);
     margin-left: -40px;
     margin-bottom: 0;
-}
-
-.submit {
-    width: 80%;
-    margin: 20px auto 0 auto;
-    font-size: 22px;
-    font-weight: 600;
 }
 
 fieldset {
