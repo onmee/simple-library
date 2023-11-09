@@ -11,32 +11,37 @@
 <body>
     <header>
         <div class="header-text">Library</div>
-        <button class="btn add-book">+ Book</button>
+        <button class="btn add-book">+ BOOK</button>
         <button class="btn sign-in">Sign In</div>
     </header>
-    <main>Books</main>
+    <main>
+        <div class="grid-item">A</div>
+        <div class="grid-item">B</div>
+        <div class="grid-item">C</div>
+        <div class="grid-item">D</div>
+        <div class="grid-item">E</div>
+        <div class="grid-item">F</div>
+    </main>
     <dialog>
-        <form method="dialog">
+        <form>
             <h3>Add a new book</h3>
             <div>
-                <input type="text" name="title" pattern="[A-Za-z0-9].{3,30}" placeholder="Title" required title="3-30 characters">
-                <input type="text" name="author" pattern="[A-Za-z0-9].{3,30}" placeholder="Author" required title="3-30 characters">
-                <input type="number" name="pages" min="50" max="2000" placeholder="Pages">
+                <input type="text" id="title" pattern="[A-Za-z0-9].{3,30}" placeholder="Title" required title="3-30 characters">
+                <input type="text" id="author" pattern="[A-Za-z0-9].{3,30}" placeholder="Author" required title="3-30 characters">
+                <input type="number" id="pages" min="50" max="2000" placeholder="Pages">
                 <fieldset>
                     <p>Have you read it?</p>
                     <div class="read-choices">
                         <label for="yes">Yes</label>
-                        <input type="radio" id="yes" name="status">
+                        <input type="radio" name="status" value="Y">
                         <label for="no">No</label>
-                        <input type="radio" name="status" id="no">
+                        <input type="radio" name="status" value="N">
                     </div>
                 </fieldset>
-                <button class="btn submit">Submit</button>
+                <button type="submit" class="btn submit">Submit</button>
             </div>
-            <div></div>
-            <div></div>
         </form>
     </dialog>
-    <footer>Subash + Github</footer>
+    <footer></footer>
 </body>
 </html>

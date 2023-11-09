@@ -1,8 +1,10 @@
 
-//Open book info entry modal
+//Select required relevant elements
 const modal: any = document.querySelector('dialog');
 const openModal: any = document.querySelector('.btn.add-book');
+const form: any = document.querySelector('form');
 
+//Open modal
 openModal.addEventListener('click', () => {
     modal.showModal()
 })
@@ -13,6 +15,7 @@ modal.addEventListener('click', (event) => {
         modal.close()
     }
 })
+
 
 //Library types
 interface myLibrary {
@@ -40,6 +43,8 @@ const submit: any = document.querySelector('.btn.submit');
 
 submit.addEventListener('click', (e) => {
     addBookToLibrary(e)
+    form.reset()
+    modal.close()
 })
 
 // Get book info input details
@@ -52,9 +57,10 @@ function getBookInfo() {
 }
 
 function addBookToLibrary(e) {
-    e.preventDefault()
+    //e.preventDefault()
     const newBook = getBookInfo()
     library.push(newBook)
+    return false;
     //Access input form data
     //Create new book object and append to library
     //const newBook = new Book(title, author, pages, readStatus);
