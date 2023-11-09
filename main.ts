@@ -4,7 +4,7 @@ const modal: any = document.querySelector('dialog');
 const openModal: any = document.querySelector('.btn.add-book');
 
 openModal.addEventListener('click', () => {
-    modal.showModal();
+    modal.showModal()
 })
 
 //Close modal when clicking the backdrop
@@ -16,10 +16,10 @@ modal.addEventListener('click', (event) => {
 
 //Library types
 interface myLibrary {
-    title: string;
-    author: string;
-    pages: number;
-    status: string;
+    title: string
+    author: string
+    pages: number
+    status: string
 }
 
 //Array to store book details
@@ -38,9 +38,8 @@ function Book(title: string, author: string, pages: number, status: string) {
 // Validate and add book to library when Submit is clicked
 const submit: any = document.querySelector('.btn.submit');
 
-submit.addEventListener('click', (event) => {
-   
-    addBookToLibrary();
+submit.addEventListener('click', (e) => {
+    addBookToLibrary(e)
 })
 
 // Get book info input details
@@ -52,7 +51,10 @@ function getBookInfo() {
     return new Book(title, author, pages, readStatus);
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(e) {
+    e.preventDefault()
+    const newBook = getBookInfo()
+    library.push(newBook)
     //Access input form data
     //Create new book object and append to library
     //const newBook = new Book(title, author, pages, readStatus);
