@@ -3,6 +3,7 @@
 
 body {
     max-width: 1800px;
+    min-width: 800px;
     margin: auto;
     font-family: 'Inter', sans-serif;
 }
@@ -17,7 +18,23 @@ header {
 }
 
 main {
+    margin: 10px;
     display: grid;
+    justify-content: center;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    gap: 10px;
+}
+
+.grid-item {
+    /*Dynamic styles*/
+    height: 300px;
+    background-color: #444;
+    text-align: center;
+    color: #ddd;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    padding: 12px;
 }
 
 footer {
@@ -157,7 +174,6 @@ input[type='radio'] {
 
 fieldset {
     border: none;
-    padding: 5px;
     font-size: 22px;
 }
 
