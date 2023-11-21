@@ -30,10 +30,11 @@ const library: myLibrary[] = [];
 
 
 //Book object constructor
-function Book(title: string, author: string, pages: number, status: string) {
+function Book(title: string, author: string, pages: number, genre: string, status: string) {
     this.title = title
     this.author = author
     this.pages = pages
+    this.genre = genre
     this.status = status
 }
  
@@ -52,20 +53,25 @@ function getBookInfo() {
     const title = (<HTMLInputElement>document.getElementById('title')).value;
     const author = (<HTMLInputElement>document.getElementById('author')).value;
     const pages = Number((<HTMLInputElement>document.getElementById('pages')).value);
-    const readStatus = document.querySelector<HTMLInputElement>('input[name="status"]:checked')!.value;
-    return new Book(title, author, pages, readStatus);
+    const genre  = (<HTMLInputElement>document.getElementById('author')).value;
+    const status = document.querySelector<HTMLInputElement>('input[name="status"]:checked')!.value;
+    return new Book(title, author, pages, genre, status);
 }
 
+// Add book to library
 function addBookToLibrary(e) {
-    //e.preventDefault()
-    const newBook = getBookInfo()
-    library.push(newBook)
-    return false;
-    //Access input form data
-    //Create new book object and append to library
-    //const newBook = new Book(title, author, pages, readStatus);
-    //library.push(newBook) - store array and this in local storage??;
+    e.preventDefault()             //Stop page refresh
+    const newBook = getBookInfo() 
+    library.push(newBook)         
+    //return false : Also Prevents page refresh
 }
+
+// Create card for newly added book
+function bookCard() {
+    
+} 
+// Loop through the library array and add the data to the cards
+
 
 function validateForm() {
 
