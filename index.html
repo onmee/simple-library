@@ -35,9 +35,11 @@
         <form>
             <h3>Add a new book</h3>
             <div>
-                <input type="text" id="title" pattern="[A-Za-z0-9].{3,30}" placeholder="Title" required title="3-30 characters">
-                <input type="text" id="author" pattern="[A-Za-z0-9].{3,30}" placeholder="Author" required title="3-30 characters">
+                <input type="text" id="title" pattern="[A-Za-z0-9].{3,20}" placeholder="Title" required title="3-20 characters">
+                <input type="text" id="author" pattern="[A-Za-z0-9].{3,20}" placeholder="Author" required title="3-20 characters">
                 <input type="number" id="pages" min="50" max="2000" placeholder="Pages">
+                <input type="text" id="genre" pattern="[A-Za-z0-9].{3,20}" placeholder="Genre" required title="3-20 characters">
+        
                 <fieldset>
                     <p>Have you read it?</p>
                     <div class="read-choices">
