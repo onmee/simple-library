@@ -18,38 +18,106 @@ header {
 }
 
 main {
-    margin: 10px;
+    margin: 15px;
     display: grid;
     justify-content: center;
     grid-template-rows: auto;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    gap: 10px;
+    gap: 15px;
 }
 
-.grid-item {
-    /*Dynamic styles*/
+/*Dynamic styles*/
+.book-card {
+    display: flex;
+    flex-direction: column;
     height: 300px;
-    background-color: #444;
-    text-align: center;
-    color: #ddd;
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    padding: 12px;
+    background-color: #FDF2E9;
+    border-radius: 15px;
+    font-size: 22px;
+    box-shadow: 0px 2px 8px 0px hsl(0deg 0% 0% / 0.45);;
+    padding: 10px;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    height: 2.5rem;
+.book-header {
+    font-family: Ubuntu;
+    line-height: 1.25;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.book-header > p {
+    font-family: Inter;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.info-grid {
+    display: grid;
+    column-gap: 10px;
+    margin-top: 10px;
+    min-height: 170px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 0.5fr 1fr;
+    overflow: auto;
+}
+
+.info-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/*Status button*/
+.status {
+    width: 170px;
+    margin-left: 30px;
+    margin-top: auto;
+
+    background-image: linear-gradient(#42A1EC, #0070C9);
+    border: 1px solid #0077CC;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 4px 15px;
+}
+
+.status:hover {
+    background-image: linear-gradient(#51A9EE, #147BCD);
+    border-color: #1482D0;
+}
+  
+.status:active {
+    background-image: linear-gradient(#3D94D9, #0067B9);
+    border-color: #006DBC;
+}
+  
+.status:focus {
+    box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
 }
 
 .header-text {
     font-family: 'Ubuntu', sans-serif;
     font-size: 40px;
-    font-weight: 700;
 }
 
-/*Clickable button*/
+/*Remove icon*/
+.remove{
+    margin-left: auto;
+}
+
+.remove:hover {
+    transform: scale(1.75);
+}
+/*Dynamic styles*/
+
+/*Clickable buttons*/
 .btn {
     background-color: #1899D6;
     border: solid transparent;
@@ -94,16 +162,6 @@ footer {
     background: none;
   }
 
-
-/*.btn {
-    display: block;
-    border: none;
-    border-radius: 15px;
-    background-color: #00d1b2;
-    padding: 12px 32px;
-    color: white;
-}*/
-
 .submit {
     width: 80%;
     margin-top: 20px;
@@ -127,11 +185,6 @@ footer {
 .sign-in::after {
     background-color: #08e2c1;
 }
-
-/*.btn:hover {
-    transform: scale(1.1);
-    filter: brightness(1.1);
-}*/
 
 /*Modal input form to add book info*/
 dialog {
