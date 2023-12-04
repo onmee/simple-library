@@ -22,6 +22,7 @@ interface myLibrary {
     title: string
     author: string
     pages: number
+    genre: string
     status: string
 }
 
@@ -44,6 +45,7 @@ const submit: any = document.querySelector('.btn.submit');
 
 submit.addEventListener('click', (e) => {
     addBookToLibrary(e)
+    newBookCard()
     form.reset()
     modal.close()
 })
@@ -53,7 +55,7 @@ function getBookInfo() {
     const title = (<HTMLInputElement>document.getElementById('title')).value;
     const author = (<HTMLInputElement>document.getElementById('author')).value;
     const pages = Number((<HTMLInputElement>document.getElementById('pages')).value);
-    const genre  = (<HTMLInputElement>document.getElementById('author')).value;
+    const genre  = (<HTMLInputElement>document.getElementById('genre')).value;
     const status = document.querySelector<HTMLInputElement>('input[name="status"]:checked')!.value;
     return new Book(title, author, pages, genre, status);
 }
@@ -83,31 +85,38 @@ function newBookCard() {
     const statusShown = document.createElement("div");
     const statusBtn = document.createElement("button")
 
+    card.classList.add('book-card');
     span.classList.add('remove');
     span.innerHTML = '<img src="assets/close.svg" alt="">';
     header.classList.add('book-header');
-    header.textContent = 'Lord of the Rings';
+    
     info.classList.add('info-grid');
-    author.classList.add('info-title');
+    author.classList.add('info-title'); 
     author.textContent = 'Author';
     authorName.classList.add('info');
-    authorName.textContent = 'J.R.R Tolkien';
+  
     pages.classList.add('info-title');
     pages.textContent = 'Pages';
     pagesNum.classList.add('info');
-    pagesNum.textContent = '230';
+    
     genre.classList.add('info-title');
     genre.textContent = 'Genre';
     genreName.classList.add('info');
-    genreName.textContent = 'Fantasy';
+    
     status.classList.add('info-title');
     status.textContent = 'Status';
     statusShown.classList.add('info');
-    statusShown.textContent = 'Read';
+    
     statusBtn.classList.add('status');
     statusBtn.textContent = 'Change Status';
 
-    card.classList.add('book-card');
+    // Use stored book details to populate these elements
+    header.textContent = library.slice(-1)[0].title; //library.slice(-1) accesses the last index of the array
+    authorName.textContent = library.slice(-1)[0].author;
+    pagesNum.textContent = String(library.slice(-1)[0].pages);
+    genreName.textContent = library.slice(-1)[0].genre;
+    statusShown.textContent = library.slice(-1)[0].status;
+
     
     card.appendChild(span);
     card.appendChild(header);
@@ -121,17 +130,10 @@ function newBookCard() {
     info.appendChild(status);
     info.appendChild(statusShown);
     card.appendChild(statusBtn);
-    main.append(card);
+    main!.append(card);
 } 
 
 // Delete any book card
 function deleteBookCard() {
     
 }
-
-//Code reasoning
-//1. User opens the modal
-//2. Inputs the details, selects Y/N, and clicks submit
-//2.1 Store the input data into local storage
-//3. This info will be entered as parameters for the book constructor
-//4. The output of the book function is stored in the library array, so you have an array of objects  
