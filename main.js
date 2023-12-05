@@ -1,4 +1,4 @@
-//Select required relevant elements
+//Select relevant elements
 var modal = document.querySelector('dialog');
 var openModal = document.querySelector('.btn.add-book');
 var form = document.querySelector('form');
@@ -44,7 +44,6 @@ function addBookToLibrary(e) {
     e.preventDefault(); //Stop page refresh
     var newBook = getBookInfo();
     library.push(newBook);
-    //return false : Also Prevents page refresh
 }
 // Create card for newly added book
 function newBookCard() {
@@ -63,8 +62,10 @@ function newBookCard() {
     var statusShown = document.createElement("div");
     var statusBtn = document.createElement("button");
     card.classList.add('book-card');
+    card.dataset.indexNumber = String(library.length - 1); //Add unique data attribute to card using its index position
     span.classList.add('remove');
     span.innerHTML = '<img src="assets/close.svg" alt="">';
+    span.onclick = function (e) { deleteBookCard(e); }; //Call function when this element is clicked
     header.classList.add('book-header');
     info.classList.add('info-grid');
     author.classList.add('info-title');
@@ -101,6 +102,19 @@ function newBookCard() {
     card.appendChild(statusBtn);
     main.append(card);
 }
-// Delete any book card
-function deleteBookCard() {
+function deleteBookCard(e) {
+    var parentNode = e.target.parentNode.parentNode; // Select parent element two levels above, because it has the relevant index number
+    var cardIndex = parentNode.dataset.indexNumber;
+    library.splice(cardIndex, 1); // Remove book object from array
+    parentNode.remove();
+    //Update the remaining data attribute numbers, so they again match the index values in the library array
+    if (library.length !== 0) {
+        //For each card after the deleted one
+        for (var i = cardIndex; i < library.length; i++) {
+            var cardList = document.getElementsByClassName('book-card');
+            //Assign new index value
+            cardList[i].dataset.indexNumber = cardIndex;
+        }
+        ;
+    }
 }
