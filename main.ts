@@ -5,23 +5,23 @@ const form: any = document.querySelector('form');
 
 //Open modal
 openModal.addEventListener('click', () => {
-    modal.showModal()
+    modal.showModal();
 })
 
 //Close modal when clicking the backdrop
 modal.addEventListener('click', (event) => {
     if (event.target.nodeName === 'DIALOG') {
-        modal.close()
+        modal.close();
     }
 })
 
 //Library types
 interface myLibrary {
-    title: string
-    author: string
-    pages: number
-    genre: string
-    status: string
+    title: string;
+    author: string;
+    pages: number;
+    genre: string;
+    status: string;
 }
 
 //Array to store book details
@@ -30,11 +30,11 @@ const library: myLibrary[] = [];
 
 //Book object constructor
 function Book(title: string, author: string, pages: number, genre: string, status: string) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.genre = genre
-    this.status = status
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.genre = genre;
+    this.status = status;
 }
  
 
@@ -42,10 +42,10 @@ function Book(title: string, author: string, pages: number, genre: string, statu
 const submit: any = document.querySelector('.btn.submit');
 
 submit.addEventListener('click', (e) => {
-    addBookToLibrary(e)
-    newBookCard()
-    form.reset()
-    modal.close()
+    addBookToLibrary(e);
+    newBookCard();
+    form.reset();
+    modal.close();
 })
 
 // Get book info input details
@@ -60,9 +60,9 @@ function getBookInfo() {
 
 // Add book to library
 function addBookToLibrary(e) {
-    e.preventDefault()             //Stop page refresh
-    const newBook = getBookInfo() 
-    library.push(newBook)         
+    e.preventDefault();             //Stop page refresh
+    const newBook = getBookInfo(); 
+    library.push(newBook);         
 }
 
 // Create card for newly added book
@@ -107,10 +107,11 @@ function newBookCard() {
     statusShown.classList.add('info');
     
     statusBtn.classList.add('status');
+    statusBtn.onclick = function(e) {changeStatus(e)};
     statusBtn.textContent = 'Change Status';
 
     // Use stored book details to populate these elements
-    header.textContent = library.slice(-1)[0].title;    //library.slice(-1) accesses the last index of the array
+    header.textContent = library.slice(-1)[0].title;    //library.slice(-1) selects the last index of the array
     authorName.textContent = library.slice(-1)[0].author;
     pagesNum.textContent = String(library.slice(-1)[0].pages);
     genreName.textContent = library.slice(-1)[0].genre;
@@ -133,20 +134,31 @@ function newBookCard() {
 } 
 
 function deleteBookCard(e) {
-   
-    const parentNode = e.target.parentNode.parentNode // Select parent element two levels above, because it has the relevant index number
-    const cardIndex = parentNode.dataset.indexNumber
-    
-    library.splice(cardIndex,1) // Remove book object from array
-    parentNode.remove()
-
+    const parentNode = e.target.parentNode.parentNode //Select parent element two levels above target, because it has the relevant index number
+    const cardIndex = parentNode.dataset.indexNumber;
+    library.splice(cardIndex,1); //Remove book object from array
+    parentNode.remove();
     //Update the remaining data attribute numbers, so they again match the index values in the library array
     if (library.length !== 0 ) {
-        //For each card after the deleted one
+        //For each card after the deleted one, assign new index value
         for (let i = cardIndex; i < library.length; i++) {
             const cardList = document.getElementsByClassName('book-card') as HTMLCollectionOf<HTMLElement>;
-            //Assign new index value
             cardList[i].dataset.indexNumber = cardIndex;
-            };
-        }
+        };
     }
+}
+
+function changeStatus(e) {
+    const parentNode = e.target.parentNode;
+    const cardIndex = parentNode.dataset.indexNumber;
+    let statusShown = parentNode.querySelector('.info:last-of-type');
+    //Change status in the library array
+    if (library[cardIndex].status == 'Read') {
+        console.log('true')
+            library[cardIndex].status = 'Not Read';
+        } else {
+            library[cardIndex].status = 'Read';
+    }
+    //Change status shown in the card
+    statusShown.textContent = library[cardIndex].status;
+}
