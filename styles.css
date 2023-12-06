@@ -26,7 +26,7 @@ main {
     gap: 15px;
 }
 
-/*Dynamic styles*/
+/*Book card*/
 .book-card {
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@ main {
 .remove:hover {
     transform: scale(1.75);
 }
-/*Dynamic styles*/
+
 
 /*Clickable buttons*/
 .btn {
@@ -240,4 +240,25 @@ fieldset p {
     padding: 0 25px 0 25px;
 }
 
+/*Footer*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: inherit;
+    min-width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 5px;
+}
+
+footer > a:hover {
+    transform: rotate(1turn) scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
 
