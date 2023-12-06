@@ -258,7 +258,7 @@ footer {
 }
 
 footer > a:hover {
-    transform: rotate(1turn) scale(1.2);
+    transform: scale(1.2);
     transition: transform 0.3s ease-in-out;
 }
 
