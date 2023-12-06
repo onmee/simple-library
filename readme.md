@@ -10,8 +10,8 @@
 
 ### About the project
 
-A simple library, where you can add or remove books that are displayed on cards.
-
+A simple library, where you can add or remove books that are displayed on cards. Does not use local or 
+remote storage as the project did not require it.
 ### Built With
 
 * HTML, CSS, Typescript
