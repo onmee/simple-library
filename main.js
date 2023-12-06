@@ -81,9 +81,10 @@ function newBookCard() {
     status.textContent = 'Status';
     statusShown.classList.add('info');
     statusBtn.classList.add('status');
+    statusBtn.onclick = function (e) { changeStatus(e); };
     statusBtn.textContent = 'Change Status';
     // Use stored book details to populate these elements
-    header.textContent = library.slice(-1)[0].title; //library.slice(-1) accesses the last index of the array
+    header.textContent = library.slice(-1)[0].title; //library.slice(-1) selects the last index of the array
     authorName.textContent = library.slice(-1)[0].author;
     pagesNum.textContent = String(library.slice(-1)[0].pages);
     genreName.textContent = library.slice(-1)[0].genre;
@@ -103,18 +104,32 @@ function newBookCard() {
     main.append(card);
 }
 function deleteBookCard(e) {
-    var parentNode = e.target.parentNode.parentNode; // Select parent element two levels above, because it has the relevant index number
+    var parentNode = e.target.parentNode.parentNode; //Select parent element two levels above target, because it has the relevant index number
     var cardIndex = parentNode.dataset.indexNumber;
-    library.splice(cardIndex, 1); // Remove book object from array
+    library.splice(cardIndex, 1); //Remove book object from array
     parentNode.remove();
     //Update the remaining data attribute numbers, so they again match the index values in the library array
     if (library.length !== 0) {
-        //For each card after the deleted one
+        //For each card after the deleted one, assign new index value
         for (var i = cardIndex; i < library.length; i++) {
             var cardList = document.getElementsByClassName('book-card');
-            //Assign new index value
             cardList[i].dataset.indexNumber = cardIndex;
         }
         ;
     }
+}
+function changeStatus(e) {
+    var parentNode = e.target.parentNode;
+    var cardIndex = parentNode.dataset.indexNumber;
+    var statusShown = parentNode.querySelector('.info:last-of-type');
+    //Change status in the library array
+    if (library[cardIndex].status == 'Read') {
+        console.log('true');
+        library[cardIndex].status = 'Not Read';
+    }
+    else {
+        library[cardIndex].status = 'Read';
+    }
+    //Change status shown in the card
+    statusShown.textContent = library[cardIndex].status;
 }
